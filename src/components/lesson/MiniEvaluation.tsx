@@ -14,7 +14,8 @@ function getOptionClassName(
   correctAnswer: string,
   selectedAnswer: string | undefined,
 ): string {
-  const baseClasses = 'w-full rounded-lg p-3 text-left transition-colors';
+  const baseClasses =
+    'w-full rounded-[5px] md:rounded-lg p-2 md:p-3 text-[12px] md:text-base text-left transition-colors';
 
   if (submitted) {
     if (option === correctAnswer) {
@@ -37,7 +38,8 @@ function getSubmitButtonClassName(
   isComplete: boolean,
   submitted: boolean,
 ): string {
-  const baseClasses = 'rounded-lg px-6 py-3 font-medium';
+  const baseClasses =
+    'rounded-[5px] md:rounded-lg md:px-6 md:py-3 px-3 py-1 text-[14px] md:text-base font-medium';
 
   if (isComplete && !submitted) {
     return `${baseClasses} bg-blue-500 text-white hover:bg-blue-600`;
@@ -80,23 +82,23 @@ export default function MiniEvaluation({
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">
+      <div className="mb-2 md:mb-6">
+        <h2 className="text-[14px] font-semibold text-gray-900 md:text-xl">
           Quick Check {attempt > 1 ? `(Attempt ${attempt})` : ''}
         </h2>
-        <p className="mt-1 text-gray-600">
+        <p className="mt-1 text-[12px] md:text-gray-600">
           Let&apos;s make sure you understood the concept
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-2 md:space-y-6">
         {questions.map((question) => (
-          <div key={question.id} className="rounded-lg bg-gray-50 p-6">
-            <p className="mb-4 font-medium text-gray-900">
+          <div key={question.id} className="rounded-lg bg-gray-50 p-2 md:p-6">
+            <p className="mb-2 text-[12px] font-medium text-gray-900 md:mb-4 md:text-base">
               {question.question}
             </p>
 
-            <div className="space-y-2">
+            <div className="space-y-2 md:space-y-4">
               {question.options.map((option) => (
                 <button
                   key={option}
@@ -117,7 +119,7 @@ export default function MiniEvaluation({
         ))}
       </div>
 
-      <div className="mt-8 flex justify-end">
+      <div className="mt-4 flex justify-end md:mt-8">
         <button
           onClick={handleSubmit}
           disabled={!isComplete || submitted}

@@ -56,7 +56,7 @@ export default function LessonContent({
         );
       default:
         return (
-          <div className="rounded-lg bg-gray-100 p-4">
+          <div className="rounded-lg bg-gray-100 p-2 md:p-4">
             <p className="text-gray-600">Content type not supported</p>
           </div>
         );
@@ -64,26 +64,28 @@ export default function LessonContent({
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-4 md:mt-8">
       {additionalContent && (
-        <div className="rounded-lg bg-gray-50 p-6">
-          <h3 className="mb-4 text-lg font-medium text-gray-900">
+        <div className="rounded-lg bg-gray-50 p-2 md:p-6">
+          <h3 className="mb-2 text-[14px] font-medium text-gray-900 md:mb-4 md:text-lg">
             Additional Help: {milestone.title}
           </h3>
           {renderContent()}
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-[10px] text-gray-600 md:text-sm">
             {additionalContent.description}
           </p>
         </div>
       )}
 
       <div className="mt-6">
-        <h3 className="mb-4 text-lg font-medium text-gray-900">
+        <h3 className="mb-2 text-[14px] font-medium text-gray-900 md:mb-4 md:text-lg">
           Interactive Examples for {milestone.title}
         </h3>
         {/* TODO: Add interactive examples based on the milestone content */}
-        <div className="rounded-lg bg-gray-50 p-6">
-          <p className="text-gray-600">{milestone.content}</p>
+        <div className="rounded-lg bg-gray-50 p-2 md:p-6">
+          <p className="text-[14px] text-gray-600 md:text-sm">
+            {milestone.content}
+          </p>
         </div>
       </div>
     </div>

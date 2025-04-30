@@ -61,24 +61,24 @@ export default function DugExplanation({
   }, [milestone, needsAdditionalHelp]);
 
   return (
-    <div className="flex items-start space-x-4">
-      <div className="relative size-20 shrink-0">
+    <div className="flex items-start space-x-1 md:space-x-4">
+      <div className="relative size-14 shrink-0 md:size-20">
         <img
           src={companionAvatar}
           alt={companionName}
-          className={`h-20 object-cover ${isTyping ? 'animate-bounce' : ''}`}
+          className={`h-14 object-cover md:h-20 ${isTyping ? 'animate-bounce' : ''}`}
         />
         {isTyping && (
           <div className="absolute bottom-0 right-0 size-4 rounded-full border-2 border-white bg-green-500" />
         )}
       </div>
 
-      <div className="relative flex-1 rounded-lg bg-blue-50 p-4">
+      <div className="relative flex-1 rounded-lg bg-blue-50 p-2 md:p-4">
         <div className="absolute left-0 top-4 -translate-x-2">
           <div className="size-0 border-y-8 border-r-8 border-blue-50 border-y-transparent" />
         </div>
 
-        <p className="text-gray-700">
+        <p className="text-[12px] text-gray-700 md:text-base">
           {displayedContent}
           {isTyping && (
             <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-gray-700" />

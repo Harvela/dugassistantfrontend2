@@ -273,9 +273,9 @@ function LessonPage() {
 
   return (
     <div className="mx-auto">
-      <div className="flex flex-row gap-8">
-        <div className="w-4/5">
-          <div className="rounded-lg bg-white p-6 shadow-sm">
+      <div className="flex flex-col-reverse gap-2 md:flex-row md:gap-8">
+        <div className="w-full md:w-4/5">
+          <div className="rounded-lg bg-white p-3 shadow-sm md:p-6">
             {lessonState.showEvaluation ? (
               <MiniEvaluation
                 questions={currentMilestone.evaluation?.questions || []}
@@ -301,13 +301,13 @@ function LessonPage() {
 
                 {lessonState.showEnvironmentInteraction &&
                   currentMilestone.environmentInteraction && (
-                    <div className="mt-4 rounded-lg bg-blue-50 p-4">
-                      <p className="mb-2">
+                    <div className="mt-4 rounded-lg bg-blue-50 p-2 md:p-4">
+                      <p className="mb-2 text-[12px] md:text-base">
                         {currentMilestone.environmentInteraction.prompt}
                       </p>
                       <input
                         type="text"
-                        className="w-full rounded border p-2"
+                        className="w-full rounded border p-2 text-[12px] md:text-base"
                         placeholder="Your response..."
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -320,10 +320,10 @@ function LessonPage() {
                     </div>
                   )}
 
-                <div className="mt-8 flex justify-end">
+                <div className="mt-4 flex justify-end md:mt-8">
                   <button
                     onClick={startEvaluation}
-                    className="rounded-lg bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600"
+                    className="rounded-[5px] bg-blue-500 px-3 py-1 text-[14px] font-medium text-white transition-colors hover:bg-blue-600 md:rounded-lg md:px-6 md:py-3 md:text-base"
                   >
                     Check Understanding
                   </button>
@@ -332,7 +332,7 @@ function LessonPage() {
             )}
           </div>
         </div>
-        <div className="h-full w-1/5">
+        <div className="size-full md:w-1/5">
           <ProgressTracker
             currentXP={lessonState.xp}
             levelXP={XP_PER_LEVEL}

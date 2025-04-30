@@ -39,6 +39,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
     avatar: string;
     nickname: string;
   } | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const currentPath = router.pathname;
@@ -68,14 +69,24 @@ export default function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <div className="flex h-screen bg-gray-50">
+      {/* Mobile overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-gray-600 bg-opacity-50 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-sm">
-        <div className="p-6">
-          <div className="mb-8 flex items-center gap-3">
+      <div
+        className={`fixed md:relative md:block ${isMobileMenuOpen ? 'block' : 'hidden'} z-50 h-full w-20 bg-white shadow-sm transition-all duration-300 ease-in-out md:w-64`}
+      >
+        <div className="p-3 md:p-6">
+          <div className="mb-8 flex items-center justify-center gap-3 md:justify-start">
             <div className="flex size-10 items-center justify-center rounded-full bg-indigo-600">
               <span className="text-xl font-bold text-white">O</span>
             </div>
-            <div>
+            <div className="hidden md:block">
               <h1 className="text-xl font-bold">Dug-Tutor</h1>
               <p className="text-sm text-gray-500">Learning with Fun</p>
             </div>
@@ -84,7 +95,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
           <nav className="space-y-4">
             <Link
               href="/dashboard"
-              className="flex items-center gap-3 rounded-lg bg-indigo-50 px-4 py-3 text-indigo-600"
+              className="flex items-center justify-center gap-3 rounded-lg bg-indigo-50 px-4 py-3 text-indigo-600 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -99,12 +110,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-              <span className="font-medium">My Courses</span>
+              <span className="hidden font-medium md:inline">My Courses</span>
             </Link>
 
             <Link
               href="/bookmarks"
-              className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50"
+              className="flex items-center justify-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -119,12 +130,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
                 />
               </svg>
-              <span>Bookmarks</span>
+              <span className="hidden md:inline">Bookmarks</span>
             </Link>
 
             <Link
               href="/trending"
-              className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50"
+              className="flex items-center justify-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -139,12 +150,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                 />
               </svg>
-              <span>Trending Courses</span>
+              <span className="hidden md:inline">Trending Courses</span>
             </Link>
 
             <Link
               href="/help"
-              className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50"
+              className="flex items-center justify-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -159,15 +170,15 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Help Articles</span>
-              <span className="ml-auto rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
+              <span className="hidden md:inline">Help Articles</span>
+              <span className="ml-auto hidden rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600 md:inline">
                 6
               </span>
             </Link>
 
             <Link
               href="/completed"
-              className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50"
+              className="flex items-center justify-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -182,12 +193,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Completed Courses</span>
+              <span className="hidden md:inline">Completed Courses</span>
             </Link>
 
             <Link
               href="/settings"
-              className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50"
+              className="flex items-center justify-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-50 md:justify-start"
             >
               <svg
                 className="size-6"
@@ -208,31 +219,44 @@ export default function MainLayout({ children }: MainLayoutProps) {
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              <span>Settings</span>
+              <span className="hidden md:inline">Settings</span>
             </Link>
           </nav>
 
-          {/* Learning Companion Section */}
-          <div className="mt-8">
+          {/* Learning Companion Section - Desktop Only */}
+          <div className="mt-8 hidden md:block">
             <h2 className="flex items-center text-lg font-semibold">
               My Learning Companion
             </h2>
             <div className="mt-4 space-y-4">
               {selectedAvatar ? (
-                <div className="flex items-center gap-3 rounded-lg bg-blue-50 p-4">
-                  <img
-                    src={selectedAvatar.image}
-                    alt={selectedAvatar.name}
-                    className="size-full object-cover"
-                  />
-                  {/* <div>
-                    <p className="font-medium text-blue-900">{selectedAvatar.name}</p>
-                    <p className="text-sm text-blue-700">Your Learning Partner</p>
-                  </div> */}
+                <div className="flex items-center gap-3 rounded-lg bg-blue-50 p-2">
+                  <div className="relative h-full overflow-hidden">
+                    <img
+                      src={selectedAvatar.image}
+                      alt={selectedAvatar.name}
+                      className="size-full object-cover"
+                    />
+                  </div>
+                  <div></div>
                 </div>
               ) : (
                 <div className="flex items-center gap-3 rounded-lg bg-gray-50 p-4">
-                  <div className="size-12 rounded-full bg-gray-200"></div>
+                  <div className="flex size-16 items-center justify-center rounded-full bg-gray-200">
+                    <svg
+                      className="size-6 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </div>
                   <div>
                     <p className="font-medium text-gray-900">
                       Select Companion
@@ -247,16 +271,37 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex flex-1 flex-col overflow-hidden transition-all duration-300 ease-in-out md:ml-0">
         {/* Top Navigation */}
         <header className="bg-white shadow-sm">
-          <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center justify-between p-4 md:px-6">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl font-semibold">{pageTitle}</h1>
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="-ml-2 p-2 md:hidden"
+              >
+                <svg
+                  className="size-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+              <h1 className="text-[18px] font-semibold md:text-2xl">
+                {pageTitle}
+              </h1>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 md:gap-6">
               {/* Search */}
-              <div className="relative">
+              <div className="relative hidden md:block">
                 <input
                   type="text"
                   placeholder="Search Dashboard"
@@ -277,34 +322,71 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 </svg>
               </div>
 
-              {/* Notifications */}
-              <button className="relative p-2">
-                <svg
-                  className="size-6 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                  />
-                </svg>
-                <span className="absolute right-0 top-0 flex size-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                  3
-                </span>
-              </button>
-
-              {/* Profile */}
-              <button className="size-10 rounded-full bg-gray-200"></button>
+              {/* Profile and Learning Companion */}
+              <div className="flex items-center gap-2 md:gap-4">
+                {/* Learning Companion - Mobile Only */}
+                <div className="md:hidden">
+                  {selectedAvatar ? (
+                    <div className="flex items-center gap-2">
+                      <div className="relative h-10 animate-bounce overflow-hidden">
+                        <img
+                          src={selectedAvatar.image}
+                          alt={selectedAvatar.name}
+                          className="size-full object-cover"
+                        />
+                      </div>
+                      <div className="hidden sm:block">
+                        <p className="text-sm font-medium">
+                          {selectedAvatar.name}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex h-10 animate-pulse items-center justify-center bg-gray-200">
+                      <svg
+                        className="size-5 text-gray-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {/* Notifications */}
+                <button className="relative p-2">
+                  <svg
+                    className="size-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    />
+                  </svg>
+                  <span className="absolute right-0 top-0 flex size-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                    3
+                  </span>
+                </button>
+                {/* Profile */}
+                <button className="size-10 rounded-full bg-gray-200"></button>
+              </div>
             </div>
           </div>
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto bg-gray-200 p-6">
+        <main className="flex-1 overflow-y-auto bg-gray-200 p-3 md:p-6">
           {children}
         </main>
       </div>

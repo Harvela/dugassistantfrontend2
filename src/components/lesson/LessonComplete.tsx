@@ -52,13 +52,13 @@ export default function LessonComplete({ onNextLesson }: LessonCompleteProps) {
         <div className="flex flex-row items-center justify-center gap-2">
           <button
             onClick={() => router.push('/dashboard')}
-            className="w-full rounded bg-gray-300 px-4 py-2 text-gray-800 transition-colors hover:bg-gray-200"
+            className="w-full rounded bg-gray-300 px-2 py-1 text-[12px] text-gray-800 transition-colors hover:bg-gray-200 md:px-4 md:py-2 md:text-base"
           >
             Return to Dashboard
           </button>
           <button
             onClick={onNextLesson}
-            className="w-full rounded bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
+            className="w-full rounded bg-blue-500 px-2 py-1 text-[12px] text-white transition-colors hover:bg-blue-600 md:px-4 md:py-2 md:text-base"
           >
             Next Lesson
           </button>

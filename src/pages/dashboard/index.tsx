@@ -7,10 +7,10 @@ function DashboardPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-lg font-semibold text-gray-900">
+        <h1 className="text-[16px] font-semibold text-gray-900 md:text-lg">
           Hello Nicole, welcome back!
         </h1>
-        <p className="text-sm text-gray-600">
+        <p className="text-[14px] text-gray-600 md:text-sm">
           Continue your learning journey where you left off.
         </p>
       </div>
@@ -18,23 +18,25 @@ function DashboardPage() {
       <div className="grid grid-cols-1 gap-4">
         {/* Your Courses Section */}
         <div>
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <h2 className="text-xl font-semibold">Your Courses</h2>
-                <span className="rounded bg-indigo-600 px-2 py-1 text-xs text-white">
+          <div className="mb-2 flex items-center justify-between md:mb-4">
+            <div className="flex items-center gap-2 md:gap-4">
+              <div className="flex items-center gap-1 md:gap-2">
+                <h2 className="text-[16px] font-semibold md:text-xl">
+                  Your Courses
+                </h2>
+                <span className="rounded bg-indigo-600 px-2 py-1 text-[10px] text-white md:text-xs">
                   PREMIUM
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-500">
                 <div className="size-6 rounded-full bg-gray-200"></div>
-                <span>26 courses</span>
+                <span className="text-[12px] md:text-sm">26 courses</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <button className="rounded-lg p-2 hover:bg-gray-100">
                 <svg
-                  className="size-5"
+                  className="size-3 md:size-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -49,7 +51,7 @@ function DashboardPage() {
               </button>
               <button className="rounded-lg p-2 hover:bg-gray-100">
                 <svg
-                  className="size-5"
+                  className="size-3 md:size-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -68,11 +70,13 @@ function DashboardPage() {
         </div>
 
         {/* Activity Charts */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="rounded-lg bg-white p-3 shadow-sm md:p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Daily Learning Activity</h3>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <h3 className="text-[14px] font-semibold md:text-lg">
+                Daily Learning Activity
+              </h3>
+              <div className="flex items-center gap-2 text-[10px] text-gray-500 md:text-sm">
                 <span>21 Nov 21 - 28 Nov 21</span>
                 <button className="rounded p-1 hover:bg-gray-100">
                   <svg
@@ -103,8 +107,10 @@ function DashboardPage() {
           </div>
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Weekly Status</h3>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <h3 className="text-[14px] font-semibold md:text-lg">
+                Weekly Status
+              </h3>
+              <div className="flex items-center gap-2 text-[10px] text-gray-500 md:text-sm">
                 <span>From 12 Oct - 24 Nov</span>
                 <button className="rounded p-1 hover:bg-gray-100">
                   <svg
@@ -132,7 +138,7 @@ function DashboardPage() {
             <div className="flex h-60 items-center justify-center text-gray-400">
               Chart will be implemented here
             </div>
-            <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
+            <div className="mt-4 flex items-center justify-between text-[10px] text-gray-500 md:text-sm">
               <div>
                 <span className="font-medium">Minimum</span>
                 <p>4 Hrs</p>

@@ -140,12 +140,14 @@ function SettingsPage() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {/* Profile Section */}
         <section className="rounded-lg bg-white p-4 shadow-sm">
-          <h2 className="mb-4 text-xl font-semibold">Profile Settings</h2>
-          <div className="flex flex-col items-center justify-center gap-8">
+          <h2 className="mb-2 text-[14px] font-semibold md:mb-4 md:text-xl">
+            Profile Settings
+          </h2>
+          <div className="flex flex-col items-center justify-center gap-2 md:gap-8">
             {/* Profile Picture */}
-            <div className="flex flex-col items-center space-y-4">
+            <div className="flex flex-col items-center space-y-2 md:space-y-4">
               <div className="relative">
-                <div className="size-32 overflow-hidden rounded-full bg-gray-100">
+                <div className="size-20 overflow-hidden rounded-full bg-gray-100 md:size-32">
                   {profilePicture ? (
                     <img
                       src={profilePicture}
@@ -155,7 +157,7 @@ function SettingsPage() {
                   ) : (
                     <div className="flex size-full items-center justify-center text-gray-400">
                       <svg
-                        className="size-12"
+                        className="size-8 md:size-12"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -202,17 +204,17 @@ function SettingsPage() {
                   onChange={handleProfilePictureChange}
                 />
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-[12px] text-gray-500 md:text-sm">
                 Click the camera icon to change your profile picture
               </p>
             </div>
 
             {/* Nickname */}
-            <div className="w-full space-y-4">
+            <div className="w-full space-y-2 md:space-y-4">
               <div>
                 <label
                   htmlFor="nickname"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-[12px] font-medium text-gray-700 md:text-sm"
                 >
                   Nickname
                 </label>
@@ -222,7 +224,7 @@ function SettingsPage() {
                     id="nickname"
                     value={nickname}
                     onChange={(e) => handleNicknameChange(e.target.value)}
-                    className="block w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                    className="block w-full rounded-md border-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm md:p-2"
                     placeholder="Enter your nickname"
                   />
                 </div>
@@ -232,48 +234,58 @@ function SettingsPage() {
         </section>
 
         {/* Language Selection */}
-        <section className="rounded-lg bg-white p-4 shadow-sm">
-          <h2 className="mb-4 text-xl font-semibold">Learning Language</h2>
+        <section className="rounded-lg bg-white p-2 shadow-sm md:p-4">
+          <h2 className="mb-2 text-[14px] font-semibold md:mb-4 md:text-xl">
+            Learning Language
+          </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {languages.map((language) => (
               <div
                 key={language.id}
-                className={`cursor-pointer rounded-lg border-2 p-4 transition-all ${
+                className={`cursor-pointer rounded-lg border-2 p-2 transition-all md:p-4 ${
                   selectedLanguage === language.id
                     ? 'border-blue-500 bg-blue-50'
                     : 'border-gray-200 hover:border-blue-300'
                 }`}
                 onClick={() => handleLanguageChange(language.id)}
               >
-                <div className="mb-2 text-center text-4xl">{language.flag}</div>
-                <p className="text-center font-medium">{language.name}</p>
+                <div className="mb-2 text-center text-xl md:text-4xl">
+                  {language.flag}
+                </div>
+                <p className="text-center text-[12px] font-medium md:text-base">
+                  {language.name}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Avatar Selection */}
-        <section className="rounded-lg bg-white p-4 shadow-sm">
-          <h2 className="mb-4 text-xl font-semibold">Learning Companion</h2>
+        <section className="rounded-lg bg-white p-2 shadow-sm md:p-4">
+          <h2 className="mb-2 text-[14px] font-semibold md:mb-4 md:text-xl">
+            Learning Companion
+          </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {avatars.map((avatar) => (
               <div
                 key={avatar.id}
-                className={`cursor-pointer rounded-lg border-2 p-4 transition-all ${
+                className={`cursor-pointer rounded-lg border-2 p-2 transition-all md:p-4 ${
                   selectedAvatar === avatar.id
                     ? 'border-blue-500 bg-blue-50'
                     : 'border-gray-200 hover:border-blue-300'
                 }`}
                 onClick={() => handleAvatarChange(avatar.id)}
               >
-                <div className="mx-auto mb-2 size-16">
+                <div className="mx-auto mb-2 size-12 md:size-16">
                   <img
                     src={avatar.image}
                     alt={avatar.name}
                     className="size-full object-contain"
                   />
                 </div>
-                <p className="text-center font-medium">{avatar.name}</p>
+                <p className="text-center text-[12px] font-medium md:text-base">
+                  {avatar.name}
+                </p>
               </div>
             ))}
           </div>
@@ -282,25 +294,27 @@ function SettingsPage() {
         {/* Companion Evolution */}
         <section className="rounded-lg bg-white p-4 shadow-sm">
           <div className="mb-4 flex flex-row items-center justify-between gap-4">
-            <h2 className="text-xl font-semibold">Companion Evolution</h2>
+            <h2 className="text-[14px] font-semibold md:text-xl">
+              Companion Evolution
+            </h2>
             <div className="rounded-lg bg-blue-100 p-3">
-              <p className="text-sm text-blue-800">
+              <p className="text-[12px] text-blue-800 md:text-sm">
                 Level {userData.level} -{' '}
                 {getCurrentEvolution(userData.level)?.name || 'Novice'}
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4">
             {Object.entries(companionEvolution).map(([level, evolution]) => (
               <div
                 key={level}
-                className={`rounded-lg p-4 ${
+                className={`rounded-lg p-2 md:p-4 ${
                   userData.level >= Number(level)
                     ? 'border border-gray-300 bg-white shadow-sm'
                     : 'bg-gray-50 opacity-90'
                 }`}
               >
-                <div className="relative mx-auto mb-2 size-16">
+                <div className="relative mx-auto mb-2 size-12 md:size-16">
                   {userData.level < Number(level) && (
                     <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black bg-opacity-50">
                       <svg
@@ -324,8 +338,10 @@ function SettingsPage() {
                     className="size-full object-contain"
                   />
                 </div>
-                <p className="text-center font-medium">{evolution.name}</p>
-                <p className="text-center text-sm text-gray-500">
+                <p className="text-center text-[12px] font-medium md:text-base">
+                  {evolution.name}
+                </p>
+                <p className="text-center text-[12px] text-gray-500 md:text-sm">
                   Level {level}
                 </p>
               </div>

@@ -40,15 +40,17 @@ export default function MilestoneProgress({
   currentIndex,
 }: MilestoneProgressProps) {
   return (
-    <div className="relative mt-4 rounded-lg bg-white p-4 shadow-sm">
-      <h2 className="mb-4 text-lg font-semibold">Lesson Progress</h2>
-      <div className="flex flex-col space-y-4">
+    <div className="relative mt-2 rounded-lg bg-white p-2 shadow-sm md:mt-4 md:p-4">
+      <h2 className="mb-2 text-[14px] font-semibold md:mb-4 md:text-lg">
+        Lesson Progress
+      </h2>
+      <div className="flex flex-col space-y-2 md:space-y-4">
         {milestones.map((milestone, index) => (
           <div key={milestone.id} className="flex items-center gap-4">
             {/* Milestone indicator and line */}
             <div className="flex flex-col items-center">
               <div
-                className={`flex size-8 items-center justify-center rounded-full ${getMilestoneStyle(
+                className={`flex size-6 items-center justify-center rounded-full md:size-8 ${getMilestoneStyle(
                   index,
                   currentIndex,
                 )}`}
@@ -70,7 +72,7 @@ export default function MilestoneProgress({
                 )}
               </div>
               {index !== milestones.length - 1 && (
-                <div className="relative h-8 w-0.5 bg-gray-200">
+                <div className="relative h-4 w-0.5 bg-gray-200 md:h-8">
                   <div
                     className="absolute left-0 top-0 w-full bg-green-500 transition-all duration-300"
                     style={{
@@ -84,14 +86,14 @@ export default function MilestoneProgress({
             {/* Milestone title and status */}
             <div className="flex-1">
               <h3
-                className={`font-medium ${getMilestoneTitleStyle(
+                className={`text-[12px] font-medium md:text-base ${getMilestoneTitleStyle(
                   index,
                   currentIndex,
                 )}`}
               >
                 {milestone.title}
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-[10px] text-gray-500 md:text-sm">
                 {getMilestoneStatus(index, currentIndex)}
               </p>
             </div>

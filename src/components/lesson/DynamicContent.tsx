@@ -7,7 +7,7 @@ interface DynamicContentProps {
 
 export default function DynamicContent({ content }: DynamicContentProps) {
   return (
-    <div className="mt-4 rounded-lg bg-gray-50 p-4">
+    <div className="mt-4 rounded-lg bg-gray-50 p-2 md:p-4">
       {content.type === 'video' && (
         <video src={content.url} controls className="w-full rounded-lg" />
       )}

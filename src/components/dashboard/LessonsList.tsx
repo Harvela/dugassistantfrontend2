@@ -60,8 +60,10 @@ export default function LessonsList() {
   };
 
   return (
-    <div className="rounded-lg bg-white p-6 shadow">
-      <h2 className="mb-4 text-xl font-semibold">Your Lessons</h2>
+    <div className="rounded-lg bg-white p-3 shadow md:p-6">
+      <h2 className="mb-2 text-[16px] font-semibold md:mb-4 md:text-xl">
+        Your Lessons
+      </h2>
 
       <div className="relative">
         <div className="scrollbar-hide -mx-6 flex overflow-x-auto px-6 pb-4">
@@ -69,29 +71,29 @@ export default function LessonsList() {
             {mockLessons.map((lesson) => (
               <div
                 key={lesson.id}
-                className="w-[calc(28.57%-12px)] min-w-[180px] flex-none cursor-pointer snap-start rounded-lg border p-4 transition-colors hover:bg-gray-50"
+                className="w-[calc(28.57%-12px)] min-w-[90px] flex-none cursor-pointer snap-start rounded-lg border border-gray-200 bg-gray-50 p-4 transition-colors hover:bg-gray-100 md:min-w-[180px]"
                 onClick={() => handleLessonClick(lesson.id)}
               >
                 <h3 className="font-medium text-gray-900">{lesson.title}</h3>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-[12px] text-gray-600 md:text-sm">
                   {lesson.description}
                 </p>
 
                 <div className="mt-2">
-                  <div className="mb-1 flex justify-between text-sm">
+                  <div className="mb-1 flex justify-between text-[12px] md:text-sm">
                     <span className="text-gray-600">Progress</span>
                     <span className="text-gray-900">{lesson.progress}%</span>
                   </div>
-                  <div className="h-2 w-full rounded-full bg-gray-200">
+                  <div className="h-1 w-full rounded-full bg-gray-200 md:h-2">
                     <div
-                      className="h-2 rounded-full bg-blue-500 transition-all duration-300"
+                      className="h-1 rounded-full bg-blue-500 transition-all duration-300 md:h-2"
                       style={{ width: `${lesson.progress}%` }}
                     />
                   </div>
                 </div>
 
                 {lesson.progress < 100 && (
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-[12px] text-gray-600 md:text-sm">
                     Next: {lesson.nextLesson}
                   </p>
                 )}
